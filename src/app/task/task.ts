@@ -39,8 +39,10 @@ export class Task {
   constructor() {
     if (localStorage.getItem('tasks')) {
       const currentTasks = localStorage.getItem('tasks')
-      console.log("currentTasks", currentTasks)
+      const completedTasks = localStorage.getItem('completedTasks')
+
       this.tasksList = currentTasks ? JSON.parse(currentTasks) : []
+      this.completedTaskList = completedTasks ? JSON.parse(completedTasks) : []
     }
     this.tasksList
   }
@@ -65,6 +67,7 @@ export class Task {
     } else {
       this.completedTaskList = this.completedTaskList.filter((el) => el !== task);
     }
+    localStorage.setItem('completedTasks', JSON.stringify(this.completedTaskList))
   }
 
   checkStatus(task: string) {
