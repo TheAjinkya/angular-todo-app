@@ -36,9 +36,19 @@ export class Task {
   tasksList: string[] = ['task 1', 'task 2'];
   completedTaskList: string[] = [];
 
+  constructor() {
+    if (localStorage.getItem('tasks')) {
+      const currentTasks = localStorage.getItem('tasks')
+      console.log("currentTasks", currentTasks)
+      this.tasksList = currentTasks ? JSON.parse(currentTasks) : []
+    }
+    this.tasksList
+  }
+
   addTask() {
     if (this.taskName.trim()) {
       this.tasksList.push(this.taskName.trim());
+      localStorage.setItem('tasks', JSON.stringify(this.tasksList))
       this.taskName = '';
     }
   }
@@ -46,6 +56,7 @@ export class Task {
   deleteTask(task: string) {
     this.tasksList = this.tasksList.filter((el) => el !== task);
     this.completedTaskList = this.completedTaskList.filter((el) => el !== task);
+    localStorage.setItem('tasks', JSON.stringify(this.tasksList))
   }
 
   completeTask(task: string) {
