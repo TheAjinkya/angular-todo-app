@@ -1,1 +1,42 @@
-<p>reservation-list works!</p>
+<div class="container mt-4">
+    <h2 class="mb-3">All Reservations</h2>
+
+    @if (loading) {
+    <div class="alert alert-info">Loading reservations...</div>
+    } @else {
+    @if (reservations.length > 0) {
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Guest Name</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (r of reservations; track r.id; let i = $index) {
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ r.firstName }} {{ r.lastName }}</td>
+                <td>{{ r.checkInDate }}</td>
+                <td>{{ r.checkOutDate }}</td>
+                <td>{{ r.email }}</td>
+                <td>{{ r.contact }}</td>
+                <td><button (click)="update(r.id)" class="btn btn-warning">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    } @else {
+    <div class="alert alert-warning">
+        No reservations found.
+    </div>
+    }
+    }
+</div>

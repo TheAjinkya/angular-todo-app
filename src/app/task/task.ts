@@ -9,7 +9,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { NgForOf } from '@angular/common';
 import { Logo } from '../logo/logo';
 
 @Component({
@@ -26,7 +25,6 @@ import { Logo } from '../logo/logo';
     MatCheckboxModule,
     MatIconModule,
     MatDividerModule,
-    NgForOf,
   ],
   templateUrl: './task.html',
   styleUrls: ['./task.scss'],

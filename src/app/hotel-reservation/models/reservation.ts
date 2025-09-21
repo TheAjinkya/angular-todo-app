@@ -1,8 +1,9 @@
-export interface Reservation {
-    id: string;
+export interface ReservationModel {
+    id: number;
     checkInDate: string;
     checkOutDate: string;
-    guestName: string;
-    guestEmail: string;
-    roomNumber: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    contact: string;
 }
