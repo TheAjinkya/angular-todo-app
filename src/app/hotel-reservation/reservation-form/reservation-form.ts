@@ -43,7 +43,6 @@ export class ReservationForm implements OnInit {
       this.reservationService.add(formData);
       this.router.navigate(["/view-reservations"])
     }
-
   }
 
   getCurrentBookings(currentId: number) {

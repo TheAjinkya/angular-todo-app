@@ -34,4 +34,14 @@ export class ReservationList implements OnInit {
     this.router.navigate(['reservation', id])
   }
 
+  delete(id: number) {
+    const data = localStorage.getItem('reservations');
+    const parsedData = data ? JSON.parse(data) : [];
+    const modData = parsedData.filter((el: any) => el.id !== id)
+    console.log("Deleted Data", modData)
+    const modDataString = JSON.stringify(modData);
+    localStorage.setItem('reservations', modDataString)
+    this.getCurrentBookings();
+  }
+
 }

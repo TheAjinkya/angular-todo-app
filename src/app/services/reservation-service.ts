@@ -32,25 +32,33 @@ export class ReservationService {
 
   add(reservationData: ReservationModel) {
     if (reservationData) {
-      const data = localStorage.getItem('reservations');
-      const reservationDataString = JSON.stringify(reservationData);
-      localStorage.setItem('reservations', reservationDataString)
+      try {
+        const data = localStorage.getItem('reservations');
+        const parsedData: ReservationModel[] = data ? JSON.parse(data) : [];
+        const modData = [...parsedData, reservationData];
+        const reservationDataString = JSON.stringify(modData);
+        localStorage.setItem('reservations', reservationDataString);
+      } catch (error) {
+        console.error("Error adding reservation:", error);
+      }
     }
   }
 
-  delete() {
-
-  }
-
-  update() {
-
-  }
-
   read() {
-    const data = localStorage.getItem('reservations');
-    const parsedData = data ? JSON.parse(data) : []
-    console.log("parsedData", parsedData)
-    return of([parsedData, ...this.demoReservations]);
+    try {
+      const data = localStorage.getItem('reservations');
+      const parsedData = data ? JSON.parse(data) : null;
+      console.log("parsedData", parsedData);
+
+      if (parsedData) {
+        return of([...parsedData, ...this.demoReservations]);
+      } else {
+        return of([...this.demoReservations]);
+      }
+    } catch (error) {
+      console.error("Error parsing reservations:", error);
+      return of([...this.demoReservations]);
+    }
   }
 
 
