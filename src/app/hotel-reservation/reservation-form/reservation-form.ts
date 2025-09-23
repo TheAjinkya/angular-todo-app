@@ -54,4 +54,21 @@ export class ReservationForm implements OnInit {
     });
   }
 
+  edit(updatedReservation: ReservationModel) {
+    if (updatedReservation) {
+      try {
+        const data = localStorage.getItem('reservations');
+        const parsedData: ReservationModel[] = data ? JSON.parse(data) : [];
+
+        const modData = parsedData.map(reservation =>
+          reservation.id === updatedReservation.id ? updatedReservation : reservation
+        );
+
+        localStorage.setItem('reservations', JSON.stringify(modData));
+      } catch (error) {
+        console.error("Error editing reservation:", error);
+      }
+    }
+  }
+
 }
