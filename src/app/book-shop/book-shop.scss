@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction:column;
+    gap: 50px;
+    padding: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.heading {
+    font-size: 32px;
+}
+
+.sub-heading {
+        font-size: 22px;
+}

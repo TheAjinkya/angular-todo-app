@@ -1,0 +1,24 @@
+<form [formGroup]="serverForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Server Name</mat-label>
+        <mat-select formControlName="serverName">
+            @for (server of serverNames; track server) {
+            <mat-option [value]="server.value">{{server.viewValue}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input formControlName="startDate" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Meeting time</mat-label>
+        <input matInput formControlName="startTime" [matTimepicker]="timepicker" [(ngModel)]="value">
+        <mat-timepicker #timepicker />
+        <mat-timepicker-toggle [for]="timepicker" matSuffix />
+    </mat-form-field>
+    <p> Selected server: {{selectedValue}} </p>
+    <button (click)="openDialog('0ms', '0ms')" matButton="elevated" color="primary" type="submit">Submit</button>
+</form>

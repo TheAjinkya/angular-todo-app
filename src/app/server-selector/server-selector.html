@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" class="full-width">
+    <mat-label>Select Server</mat-label>
+    <mat-select [formControl]="serverControl">
+        <mat-option *ngFor="let server of servers$ | async" [value]="server">
+            {{ server.name }} ({{ server.status }})
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="serverControl.invalid && serverControl.touched">
+        Please select a server.
+    </mat-error>
+</mat-form-field>

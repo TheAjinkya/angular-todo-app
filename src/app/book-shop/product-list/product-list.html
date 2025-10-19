@@ -1,0 +1,37 @@
+<div class="search-content">
+    <mat-form-field class="example-form-field">
+        <mat-label>Search</mat-label>
+        <input matInput (keypress)="applyFilter($event)" type="text" [(ngModel)]="value">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sort</mat-label>
+        <mat-select (selectionChange)="sortPrice($event.value)" matNativeControl required>
+            <mat-option value="low">Price low to high</mat-option>
+            <mat-option value="high">Price high to low</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="container">
+    @for(product of filteredProducts; track product.name){
+    <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>{{product.price | currency:'USD'}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="images/{{product.image_url}}">
+        <mat-card-content>
+            <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="addToCart(product)" matButton>Add to Cart</button>
+            <button matButton>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
+    }
+</div>

@@ -1,0 +1,13 @@
+<!-- FirstName: <input type="text" [(ngModel)]="firstName">
+LastName: <input type="text" [(ngModel)]="lastName">
+email: <input type="text" [(ngModel)]="email"> -->
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<label>FirstName</label>
+<input type="text" formControlName="firstName"/>
+<label>LastName</label>
+<input type="text" formControlName="lastName" />
+<label>Id</label>
+<input type="text" formControlName="id" />
+<button type="submit">Submit</button>
+</form>

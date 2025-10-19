@@ -46,8 +46,8 @@ export class ReservationForm implements OnInit {
   }
 
   getCurrentBookings(currentId: number) {
-    this.reservationService.read().subscribe((data: ReservationModel[]) => {
-      const currentReservation = data.find(res => res.id === currentId)
+    this.reservationService.getAllReservations().subscribe((data: any) => {
+      const currentReservation = data.find((res: any) => res.id === currentId)
       console.log("currentReservation", currentReservation)
       if (currentReservation)
         this.reservationForm.patchValue(currentReservation)

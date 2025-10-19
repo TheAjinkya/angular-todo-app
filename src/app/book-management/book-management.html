@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <a matButton="filled" routerLink="view">View User</a>
+        <a matButton="filled" routerLink="create">Create User</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+    <div class="heading">User Management</div>
+    <div class="sub-heading">CRUD Operations for the user and book</div>
+    <!-- Username: {{user$ | async; let user}} -->
+     <!-- <div *ngIf="user$ | async as users">
+        <div *ngFor="let user of users">
+        {{user.userId}} {{user.firstName}} {{user.lastName}} 
+        </div>
+     </div> -->
+</div>
+
+<router-outlet></router-outlet>

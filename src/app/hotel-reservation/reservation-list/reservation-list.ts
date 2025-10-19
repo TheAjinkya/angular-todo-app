@@ -23,7 +23,7 @@ export class ReservationList implements OnInit {
   }
 
   getCurrentBookings() {
-    this.reservationService.read().subscribe((data) => {
+    this.reservationService.getAllReservations().subscribe((data: any) => {
       this.reservations = data;
       console.log("current reservations", data)
       this.loading = false;

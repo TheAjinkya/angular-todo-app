@@ -1,0 +1,17 @@
+.actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spinner {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+mat-snack-bar.success {
+    --mdc-snackbar-container-color: #4caf50;
+}
+
+mat-snack-bar.error {
+    --mdc-snackbar-container-color: #f44336;
+}

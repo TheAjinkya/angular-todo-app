@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="ttile">Your Cart: {{totalCost$ | async | currency: 'GBP'}}</div>
+    <mat-card>
+        <mat-list>
+            @let cartData2 = cartData$ | async;
+            @for(data of cartData$ | async; track data.id){
+            <mat-list-item>
+                <span matListItemTitle>
+                    {{data.name}}
+                </span>
+                <span matListItemLine>
+                    {{data.price | currency :'GBP'}}
+                </span>
+            </mat-list-item>
+            }
+        </mat-list>
+
+        <mat-list-item>
+            <span matListItemTitle class="total">
+                Total Cost
+            </span>
+            <span matListItemLine>
+                {{totalCost$ |async | currency :'GBP'}}
+            </span>
+        </mat-list-item>
+        <div class="right-side">
+            <button matButton="filled" color="accent" (click)="clearCart()">Clear</button>
+            <button matButton="filled" color="accent" (click)="checkout()">Checkout</button>
+        </div>
+    </mat-card>
+
+</div>

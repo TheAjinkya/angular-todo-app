@@ -1,0 +1,13 @@
+<form [formGroup]="rebootForm" (ngSubmit)="onSubmit()">
+    <app-server-selector formControlName="server"></app-server-selector>
+    <app-time-scheduler formControlName="time"></app-time-scheduler>
+    <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="rebootForm.invalid || loading">
+            Schedule Reboot
+        </button>
+        <mat-progress-spinner *ngIf="loading" diameter="20" class="spinner"></mat-progress-spinner>
+    </div>
+</form>
+<mat-snack-bar [ngClass]="{'success': success, 'error': !success}" *ngIf="message" [duration]="3000">
+    {{ message }}
+</mat-snack-bar>
